@@ -1,0 +1,108 @@
+{
+    "id": 48,
+    "name": "t2",
+    "location": "paris",
+    "start_date": "2025-06-08",
+    "end_date": "2025-06-09",
+    "description": "duhzbhdzhdzj",
+    "number_of_rounds": 3,
+    "current_round": 3,
+    "rounds": [
+        {
+            "name": "Round 1",
+            "start_time": "2025-06-08T07:01:26.088362",
+            "end_time": "2025-06-08T07:01:52.904291",
+            "matches": [
+                {
+                    "player1_national_id": "FG12345",
+                    "player2_national_id": "ER12345",
+                    "player1_score": 1.0,
+                    "player2_score": 0.0,
+                    "is_finished": true
+                },
+                {
+                    "player1_national_id": "HJ54321",
+                    "player2_national_id": "GF45678",
+                    "player1_score": 0.0,
+                    "player2_score": 1.0,
+                    "is_finished": true
+                }
+            ],
+            "is_finished": true
+        },
+        {
+            "name": "Round 2",
+            "start_time": "2025-06-08T07:01:58.998992",
+            "end_time": "2025-06-08T07:02:20.626617",
+            "matches": [
+                {
+                    "player1_national_id": "ER12345",
+                    "player2_national_id": "HJ54321",
+                    "player1_score": 1.0,
+                    "player2_score": 0.0,
+                    "is_finished": true
+                },
+                {
+                    "player1_national_id": "FG12345",
+                    "player2_national_id": "GF45678",
+                    "player1_score": 1.0,
+                    "player2_score": 0.0,
+                    "is_finished": true
+                }
+            ],
+            "is_finished": true
+        },
+        {
+            "name": "Round 3",
+            "start_time": "2025-06-08T07:02:27.815718",
+            "end_time": "2025-06-08T07:02:34.601808",
+            "matches": [
+                {
+                    "player1_national_id": "ER12345",
+                    "player2_national_id": "HJ54321",
+                    "player1_score": 1.0,
+                    "player2_score": 0.0,
+                    "is_finished": true
+                },
+                {
+                    "player1_national_id": "FG12345",
+                    "player2_national_id": "GF45678",
+                    "player1_score": 0.0,
+                    "player2_score": 1.0,
+                    "is_finished": true
+                }
+            ],
+            "is_finished": true
+        }
+    ],
+    "players": [
+        {
+            "last_name": "user",
+            "first_name": "one",
+            "birthdate": "1998-06-10",
+            "national_id": "ER12345",
+            "score": 0.0
+        },
+        {
+            "last_name": "user",
+            "first_name": "two",
+            "birthdate": "1996-01-15",
+            "national_id": "HJ54321",
+            "score": 0.0
+        },
+        {
+            "last_name": "user",
+            "first_name": "five",
+            "birthdate": "1996-05-16",
+            "national_id": "FG12345",
+            "score": 0.0
+        },
+        {
+            "last_name": "user",
+            "first_name": "four",
+            "birthdate": "1886-05-10",
+            "national_id": "GF45678",
+            "score": 0.0
+        }
+    ]
+}

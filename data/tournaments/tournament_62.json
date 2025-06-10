@@ -1,0 +1,130 @@
+{
+    "id": 62,
+    "name": "t4",
+    "location": "bordaux",
+    "start_date": "2025-06-08",
+    "end_date": "2025-06-09",
+    "description": "fhvbghbfvbghf",
+    "number_of_rounds": 4,
+    "current_round": 4,
+    "rounds": [
+        {
+            "name": "Round 1",
+            "start_time": "2025-06-08T08:06:52.891623",
+            "end_time": "2025-06-08T08:07:29.270794",
+            "matches": [
+                {
+                    "player1_national_id": "HJ54321",
+                    "player2_national_id": "FG12345",
+                    "player1_score": 0.0,
+                    "player2_score": 1.0,
+                    "is_finished": true
+                },
+                {
+                    "player1_national_id": "FG98756",
+                    "player2_national_id": "GF45678",
+                    "player1_score": 1.0,
+                    "player2_score": 0.0,
+                    "is_finished": true
+                }
+            ],
+            "is_finished": true
+        },
+        {
+            "name": "Round 2",
+            "start_time": "2025-06-08T08:07:37.056140",
+            "end_time": "2025-06-08T08:07:48.006070",
+            "matches": [
+                {
+                    "player1_national_id": "FG12345",
+                    "player2_national_id": "FG98756",
+                    "player1_score": 1.0,
+                    "player2_score": 0.0,
+                    "is_finished": true
+                },
+                {
+                    "player1_national_id": "GF45678",
+                    "player2_national_id": "HJ54321",
+                    "player1_score": 0.0,
+                    "player2_score": 1.0,
+                    "is_finished": true
+                }
+            ],
+            "is_finished": true
+        },
+        {
+            "name": "Round 3",
+            "start_time": "2025-06-08T08:07:51.772541",
+            "end_time": "2025-06-08T08:08:18.739562",
+            "matches": [
+                {
+                    "player1_national_id": "FG12345",
+                    "player2_national_id": "HJ54321",
+                    "player1_score": 1.0,
+                    "player2_score": 0.0,
+                    "is_finished": true
+                },
+                {
+                    "player1_national_id": "FG98756",
+                    "player2_national_id": "GF45678",
+                    "player1_score": 0.0,
+                    "player2_score": 1.0,
+                    "is_finished": true
+                }
+            ],
+            "is_finished": true
+        },
+        {
+            "name": "Round 4",
+            "start_time": "2025-06-08T08:08:21.837836",
+            "end_time": "2025-06-08T08:08:36.477451",
+            "matches": [
+                {
+                    "player1_national_id": "FG12345",
+                    "player2_national_id": "GF45678",
+                    "player1_score": 1.0,
+                    "player2_score": 0.0,
+                    "is_finished": true
+                },
+                {
+                    "player1_national_id": "HJ54321",
+                    "player2_national_id": "FG98756",
+                    "player1_score": 0.5,
+                    "player2_score": 0.5,
+                    "is_finished": true
+                }
+            ],
+            "is_finished": true
+        }
+    ],
+    "players": [
+        {
+            "last_name": "user",
+            "first_name": "four",
+            "birthdate": "1886-05-10",
+            "national_id": "GF45678",
+            "score": 1.0
+        },
+        {
+            "last_name": "user",
+            "first_name": "five",
+            "birthdate": "1996-05-16",
+            "national_id": "FG12345",
+            "score": 4.0
+        },
+        {
+            "last_name": "user",
+            "first_name": "two",
+            "birthdate": "1996-01-15",
+            "national_id": "HJ54321",
+            "score": 1.5
+        },
+        {
+            "last_name": "user",
+            "first_name": "six",
+            "birthdate": "1888-12-01",
+            "national_id": "FG98756",
+            "score": 1.5
+        }
+    ]
+}

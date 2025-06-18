@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: models/round.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-2"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="models.round.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               models/round.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="W293">
+               <span class="count sev-2">
+                  23
+               </span>
+               <strong>W293:</strong> blank line contains whitespace
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="models.round.source.html#l15">
+                  <tt><i>15</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l20">
+                  <tt><i>20</i>             </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l26">
+                  <tt><i>26</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l34">
+                  <tt><i>34</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l44">
+                  <tt><i>44</i>             </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l52">
+                  <tt><i>52</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l56">
+                  <tt><i>56</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l60">
+                  <tt><i>60</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l64">
+                  <tt><i>64</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l71">
+                  <tt><i>71</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l77">
+                  <tt><i>77</i>             </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l81">
+                  <tt><i>81</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l89">
+                  <tt><i>89</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l93">
+                  <tt><i>93</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l102">
+                  <tt><i>102</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l106">
+                  <tt><i>106</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l117">
+                  <tt><i>117</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l127">
+                  <tt><i>127</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l133">
+                  <tt><i>133</i>             </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l138">
+                  <tt><i>138</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l146">
+                  <tt><i>146</i>                 </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l148">
+                  <tt><i>148</i>         </tt>
+               </a>
+            </li><li>
+               
+               <a href="models.round.source.html#l153">
+                  <tt><i>153</i>         </tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E129">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E129:</strong> visually indented line with same indent as next logical line
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="models.round.source.html#l86">
+                  <tt><i>86</i>                 <span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">player1_national_id</span> <span class="o">==</span> <span class="n">player2_id</span> <span class="ow">and</span> <span class="n">match</span><span class="o">.</span><span class="n">player2_national_id</span> <span class="o">==</span> <span class="n">player1_id</span><span class="p">)):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E303">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E303:</strong> too many blank lines (2)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="models.round.source.html#l16">
+                  <tt><i>16</i>     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W292">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>W292:</strong> no newline at end of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="models.round.source.html#l156">
+                  <tt><i>156</i>         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Round(&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, matches=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matches</span><span class="p">)</span><span class="si">}</span><span class="s2">, finished=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">is_finished</span><span class="si">}</span><span class="s2">)&quot;</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

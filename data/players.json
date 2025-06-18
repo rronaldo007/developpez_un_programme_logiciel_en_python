@@ -1,0 +1,44 @@
+[
+  {
+    "last_name": "One",
+    "first_name": "User",
+    "birthdate": "1991-05-10",
+    "national_id": "CG36852"
+  },
+  {
+    "last_name": "User",
+    "first_name": "Two",
+    "birthdate": "1995-10-06",
+    "national_id": "UJ58963"
+  },
+  {
+    "last_name": "Three",
+    "first_name": "User",
+    "birthdate": "1990-06-09",
+    "national_id": "FD65423"
+  },
+  {
+    "last_name": "Twenty",
+    "first_name": "User",
+    "birthdate": "2000-06-10",
+    "national_id": "KG95135"
+  },
+  {
+    "last_name": "Ronaldo",
+    "first_name": "Rukundo",
+    "birthdate": "1998-06-10",
+    "national_id": "JK12365"
+  },
+  {
+    "last_name": "Regis",
+    "first_name": "Rukundo",
+    "birthdate": "1996-10-28",
+    "national_id": "RG65147"
+  },
+  {
+    "last_name": "Emile",
+    "first_name": "Zola",
+    "birthdate": "1981-10-06",
+    "national_id": "HJ62984"
+  }
+]

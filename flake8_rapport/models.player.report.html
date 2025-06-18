@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: models/player.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-2"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="models.player.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               models/player.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="W293">
+               <span class="count sev-2">
+                  21
+               </span>
+               <strong>W293:</strong> blank line contains whitespace
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="models.player.source.html#l10">
+                  <tt><i>10</i> <span class="sd">    Responsabilités LIMITÉES :</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l15">
+                  <tt><i>15</i> <span class="sd">    Note: Le score est géré par le Tournament, pas par le Player</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l18">
+                  <tt><i>18</i>     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">last_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">first_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">birthdate</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">national_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l22">
+                  <tt><i>22</i> <span class="sd">        Args:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l28">
+                  <tt><i>28</i> <span class="sd">        Raises:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l34">
+                  <tt><i>34</i>         <span class="c1"># Assignation des données nettoyées</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l40">
+                  <tt><i>40</i>     <span class="k">def</span><span class="w"> </span><span class="nf">_validate_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">last_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">first_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">birthdate</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">national_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l51">
+                  <tt><i>51</i>     <span class="k">def</span><span class="w"> </span><span class="nf">get_full_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l55">
+                  <tt><i>55</i>     <span class="k">def</span><span class="w"> </span><span class="nf">calculate_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_date</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l59">
+                  <tt><i>59</i> <span class="sd">        Args:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l62">
+                  <tt><i>62</i> <span class="sd">        Returns:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l67">
+                  <tt><i>67</i>     <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l76">
+                  <tt><i>76</i>     <span class="nd">@staticmethod</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l81">
+                  <tt><i>81</i> <span class="sd">        Args:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l84">
+                  <tt><i>84</i> <span class="sd">        Returns:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l93">
+                  <tt><i>93</i>         <span class="c1"># Créer le joueur</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l101">
+                  <tt><i>101</i>         <span class="k">return</span> <span class="n">player</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l103">
+                  <tt><i>103</i>     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l107">
+                  <tt><i>107</i>     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l111">
+                  <tt><i>111</i>     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="models.player.source.html#l117">
+                  <tt><i>117</i>     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W292">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>W292:</strong> no newline at end of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="models.player.source.html#l120">
+                  <tt><i>120</i> &nbsp;</tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

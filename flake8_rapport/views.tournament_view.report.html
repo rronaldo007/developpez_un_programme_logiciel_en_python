@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: views/tournament_view.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="views.tournament_view.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               views/tournament_view.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F821">
+               <span class="count sev-1">
+                  6
+               </span>
+               <strong>F821:</strong> undefined name 'status'
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Undefined name 'status':</p>
+               
+               <a href="views.tournament_view.source.html#l299">
+                  <tt><i>299</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">players_count</span><span class="si">}</span><span class="s2"> joueurs - &quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Undefined name 'tournaments':</p>
+               
+               <a href="views.tournament_view.source.html#l310">
+                  <tt><i>310</i>             <span class="k">elif</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">choice</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tournaments</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Undefined name 'tournaments':</p>
+               
+               <a href="views.tournament_view.source.html#l311">
+                  <tt><i>311</i>                 <span class="k">return</span> <span class="n">tournaments</span><span class="p">[</span><span class="n">choice</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Undefined name 'tournaments':</p>
+               
+               <a href="views.tournament_view.source.html#l315">
+                  <tt><i>315</i>                     <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tournaments</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Undefined name 'tournaments':</p>
+               
+               <a href="views.tournament_view.source.html#l317">
+                  <tt><i>317</i>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">select_tournament</span><span class="p">(</span><span class="n">tournaments</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Undefined name 'tournaments':</p>
+               
+               <a href="views.tournament_view.source.html#l320">
+                  <tt><i>320</i>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">select_tournament</span><span class="p">(</span><span class="n">tournaments</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F841">
+               <span class="count sev-1">
+                  2
+               </span>
+               <strong>F841:</strong> local variable 'loser_id' is assigned to but never used
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Local variable 'loser_id' is assigned to but never used:</p>
+               
+               <a href="views.tournament_view.source.html#l427">
+                  <tt><i>427</i>             <span class="n">loser_id</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">get_loser_id</span><span class="p">()</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Local variable 'status' is assigned to but never used:</p>
+               
+               <a href="views.tournament_view.source.html#l792">
+                  <tt><i>792</i>             <span class="n">status</span> <span class="o">=</span> <span class="n">format_tournament_status</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E127">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E127:</strong> continuation line over-indented for visual indent
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="views.tournament_view.source.html#l300">
+                  <tt><i>300</i>                   <span class="sa">f</span><span class="s2">&quot;Tours: </span><span class="si">{</span><span class="n">tournament</span><span class="o">.</span><span class="n">current_round</span><span class="si">}</span><span class="s2">/&quot;</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W292">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>W292:</strong> no newline at end of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="views.tournament_view.source.html#l792">
+                  <tt><i>792</i>             <span class="n">status</span> <span class="o">=</span> <span class="n">format_tournament_status</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

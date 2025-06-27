@@ -8,20 +8,18 @@ from views.tournament_view import TournamentView
 from data.data_manager import DataManager
 from utils.validators import validate_date_format, validate_tournament_dates
 from utils.tournament_helpers import TournamentPairingHelper
+from controllers.player_controller import PlayerController
 
 
 class TournamentController:
-    """Manage tournament CRUD operations, round progression, and reports."""
 
     def __init__(self, data_manager: DataManager, players: List[Player]):
-        """Initialize with DataManager and list of Player objects."""
         self.data_manager = data_manager
         self.players = players
         self.tournaments = self._load_all_tournaments()
         self.tournament_view = TournamentView()
 
     def run(self):
-        """Main loop: display menu and dispatch user choices."""
         try:
             while True:
                 choice = self.tournament_view.show_tournament_menu()
@@ -33,15 +31,12 @@ class TournamentController:
             )
 
     def get_all_tournaments(self) -> List[Tournament]:
-        """Return a shallow copy of the tournaments list."""
         return self.tournaments.copy()
 
     def update_players_data(self, new_players: List[Player]):
-        """Update the players list when changes occur elsewhere."""
         self.players = new_players
 
     def save_data(self):
-        """Persist all tournaments to storage."""
         for tournament in self.tournaments:
             self._save_tournament(tournament)
 
@@ -193,8 +188,6 @@ class TournamentController:
         if hasattr(tournament, '_results_displayed'):
             return
         tournament._results_displayed = True
-        rankings = tournament.get_final_rankings()
-        winner = rankings[0] if rankings else None
         self.tournament_view.announce_tournament_end(tournament)
         self.tournament_view.wait_for_user(
             "Appuyez sur Entrée pour retourner au menu du tournoi..."
@@ -216,7 +209,7 @@ class TournamentController:
                 pairs, round_number
             ):
                 return
-            new_round = tournament.start_next_round(pairs)
+            tournament.start_next_round(pairs)
             if self._save_tournament(tournament):
                 self.tournament_view.show_success(
                     f"Tour {round_number} démarré avec succès!"
@@ -528,7 +521,6 @@ class TournamentController:
             return False
 
     def _handle_create_new_player(self):
-        from controllers.player_controller import PlayerController
         player_controller = PlayerController(self.data_manager, self.players)
         player_controller._handle_add_player()
         self.players = self.data_manager.load_players()

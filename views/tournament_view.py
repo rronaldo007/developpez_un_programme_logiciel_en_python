@@ -9,8 +9,8 @@ from utils.validators import validate_tournament_dates
 
 
 class TournamentView(BaseView):
-
     def show_tournament_menu(self) -> str:
+        """Displays the main tournament management menu and gets user choice."""
         self.display_title("GESTION DES TOURNOIS")
         print("1. Créer un nouveau tournoi")
         print("2. Voir tous les tournois")
@@ -28,7 +28,8 @@ class TournamentView(BaseView):
         current_round = tournament.current_round
         total_rounds = tournament.number_of_rounds
 
-        print(f"Statut: {status} | Joueurs: {players_count} | "
+        print(f"Statut: {status} | "
+              f"Joueurs: {players_count} | "
               f"Tour: {current_round}/{total_rounds}")
         self.display_separator()
 
@@ -388,7 +389,6 @@ class TournamentView(BaseView):
             return self.get_match_result_input(match, players_data)
 
     def announce_match_result(self, match, players_data=None):
-        """Annonce le résultat d'un match qui vient d'être enregistré"""
         p1_name = match.player1_national_id
         p2_name = match.player2_national_id
 
@@ -412,7 +412,6 @@ class TournamentView(BaseView):
                   "point")
         else:
             winner_id = match.get_winner_id()
-            loser_id = match.get_loser_id()
 
             winner_name = (p1_name if winner_id == match.player1_national_id
                            else p2_name)
@@ -492,7 +491,6 @@ class TournamentView(BaseView):
         self.wait_for_user()
 
     def show_round_details(self, round_obj, tournament=None):
-        """Affiche les détails d'un tour"""
         if not round_obj:
             self.show_info("Aucun tour disponible.")
             return
@@ -515,7 +513,8 @@ class TournamentView(BaseView):
               f"{len(round_obj.get_finished_matches())}")
 
         if round_obj.is_finished and round_obj.end_time:
-            duration = format_duration(round_obj.start_time, round_obj.end_time)
+            duration = format_duration(round_obj.start_time,
+                                       round_obj.end_time)
             print(f"Durée                : {duration}")
         elif round_obj.all_matches_finished() and not round_obj.is_finished:
             print("Note                 : Le tour peut être finalisé")
@@ -682,23 +681,26 @@ class TournamentView(BaseView):
 
     def show_tournaments_list(self, tournaments: List):
         self.display_title("LISTE DES TOURNOIS")
-        
+
         if not tournaments:
             self.show_info("Aucun tournoi enregistré.")
             return
-        
+
         print(f"{'#':<3} {'Nom':<25} {'Lieu':<15} {'Statut':<15} {'Joueurs':<8}")
         self.display_separator()
-        
+
         for i, tournament in enumerate(tournaments, 1):
             status = format_tournament_status(tournament)
             players_count = len(tournament.players)
-            
-            name = tournament.name[:22] + "..." if len(tournament.name) > 25 else tournament.name
-            location = tournament.location[:12] + "..." if len(tournament.location) > 15 else tournament.location
-            
-            print(f"{i:<3} {name:<25} {location:<15} {status:<15} {players_count:<8}")
-        
+
+            name = (tournament.name[:22] + "..."
+                    if len(tournament.name) > 25 else tournament.name)
+            location = (tournament.location[:12] + "..."
+                        if len(tournament.location) > 15 else tournament.location)
+
+            print(f"{i:<3} {name:<25} {location:<15} {status:<15} "
+                  f"{players_count:<8}")
+
         self.wait_for_user()
 
     def show_success(self, message: str):
@@ -781,7 +783,6 @@ class TournamentView(BaseView):
         return self.confirm_action("Confirmer le démarrage de ce tour")
 
     def confirm_next_round_immediate(self) -> bool:
-        """Demande si on veut démarrer immédiatement le tour suivant"""
         return self.confirm_action(
             "Voulez-vous démarrer immédiatement le tour suivant"
         )

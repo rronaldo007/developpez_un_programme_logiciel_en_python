@@ -34,5 +34,11 @@
     "first_name": "Rukundo",
     "birthdate": "1996-10-28",
     "national_id": "RG65147"
+  },
+  {
+    "last_name": "Stephen",
+    "first_name": "Curry",
+    "birthdate": "1990-10-06",
+    "national_id": "SC89542"
   }
 ]

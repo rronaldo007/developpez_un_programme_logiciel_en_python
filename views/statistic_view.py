@@ -1,4 +1,4 @@
-from typing import List, Dict, Optional
+from typing import List, Dict
 from .base_view import BaseView
 from utils.formatters import (
     format_player_name,

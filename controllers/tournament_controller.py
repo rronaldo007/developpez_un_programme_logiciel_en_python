@@ -1,9 +1,3 @@
-"""TournamentController module.
-
-Defines TournamentController to manage creation, management,
-and reporting of tournaments using DataManager and TournamentView.
-"""
-
 import os
 from typing import List, Dict
 
@@ -614,3 +608,4 @@ class TournamentController:
 
     def _save_tournament(self, tournament: Tournament) -> bool:
         return self.data_manager.save_tournament(tournament)
+

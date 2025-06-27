@@ -1,6 +1,6 @@
 import re
 from datetime import datetime, timedelta
-from typing import Optional, Tuple
+from typing import Tuple
 
 
 def validate_chess_id(chess_id: str) -> bool:

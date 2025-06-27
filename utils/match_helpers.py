@@ -34,7 +34,6 @@ class MatchAnalysisHelper:
             return "Match nul"
 
         winner_id = match.get_winner_id()
-        loser_id = match.get_loser_id()
 
         if winner_id == match.player1_national_id:
             winner_score = match.player1_score

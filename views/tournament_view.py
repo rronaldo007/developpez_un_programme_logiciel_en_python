@@ -245,7 +245,6 @@ class TournamentView(BaseView):
         except ValueError:
             self.show_error("Veuillez entrer un numéro valide.")
             return self.select_tournament(tournaments)
-        
 
     def show_tournament_details(self, tournament):
         self.display_title(f"DÉTAILS DU TOURNOI - {tournament.name}")
@@ -306,31 +305,7 @@ class TournamentView(BaseView):
 
             print(f"{position:<4} {name:<25} {score_display:<6}")
 
-        self.wait_for_user()(tournament)
-        players_count = len(tournament.players)
-        print(f"{i}. {tournament.name} ({tournament.location})")
-        print(f"    {status} - {players_count} joueurs - "
-                  f"Tours: {tournament.current_round}/"
-                  f"{tournament.number_of_rounds}")
-
-        print("0. Annuler")
-        self.display_separator()
-
-        try:
-            choice = int(self.get_input("Numéro du tournoi"))
-            if choice == 0:
-                return None
-            elif 1 <= choice <= len(tournaments):
-                return tournaments[choice - 1]
-            else:
-                self.show_error(
-                    f"Numéro invalide. Entrez un nombre entre 0 et "
-                    f"{len(tournaments)}."
-                )
-                return self.select_tournament(tournaments)
-        except ValueError:
-            self.show_error("Veuillez entrer un numéro valide.")
-            return self.select_tournament(tournaments)
+        self.wait_for_user()
 
     def select_match_for_results(self, current_round, unfinished_matches,
                                  tournament) -> Union[str, int]:
@@ -705,6 +680,27 @@ class TournamentView(BaseView):
 
         self.wait_for_user()
 
+    def show_tournaments_list(self, tournaments: List):
+        self.display_title("LISTE DES TOURNOIS")
+        
+        if not tournaments:
+            self.show_info("Aucun tournoi enregistré.")
+            return
+        
+        print(f"{'#':<3} {'Nom':<25} {'Lieu':<15} {'Statut':<15} {'Joueurs':<8}")
+        self.display_separator()
+        
+        for i, tournament in enumerate(tournaments, 1):
+            status = format_tournament_status(tournament)
+            players_count = len(tournament.players)
+            
+            name = tournament.name[:22] + "..." if len(tournament.name) > 25 else tournament.name
+            location = tournament.location[:12] + "..." if len(tournament.location) > 15 else tournament.location
+            
+            print(f"{i:<3} {name:<25} {location:<15} {status:<15} {players_count:<8}")
+        
+        self.wait_for_user()
+
     def show_success(self, message: str):
         self.display_success(message)
 
@@ -789,17 +785,3 @@ class TournamentView(BaseView):
         return self.confirm_action(
             "Voulez-vous démarrer immédiatement le tour suivant"
         )
-
-    def show_tournaments_list(self, tournaments: List):
-        self.display_title("LISTE DES TOURNOIS")
-
-        if not tournaments:
-            self.show_info("Aucun tournoi enregistré.")
-            return
-
-        print(f"{'#':<3} {'Nom':<25} {'Lieu':<15} {'Statut':<15} "
-              f"{'Joueurs':<8}")
-        self.display_separator()
-
-        for i, tournament in enumerate(tournaments, 1):
-            status = format_tournament_status

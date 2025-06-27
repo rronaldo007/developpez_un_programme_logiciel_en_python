@@ -608,4 +608,3 @@ class TournamentController:
 
     def _save_tournament(self, tournament: Tournament) -> bool:
         return self.data_manager.save_tournament(tournament)
-

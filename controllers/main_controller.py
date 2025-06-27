@@ -1,10 +1,3 @@
-"""MainController module.
-
-Defines the MainController class, which orchestrates
-application startup, user interaction, and data flow
-between the data layer, sub‐controllers, and views.
-"""
-
 from views.menu_view import MenuView
 from controllers.player_controller import PlayerController
 from controllers.tournament_controller import TournamentController

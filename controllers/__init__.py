@@ -1,14 +1,3 @@
-"""controllers package.
-
-This package exports all controllers used throughout the
-application:
-
-- MainController
-- PlayerController
-- TournamentController
-- StatisticsController
-"""
-
 from .main_controller import MainController
 from .player_controller import PlayerController
 from .tournament_controller import TournamentController

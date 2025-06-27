@@ -1,9 +1,3 @@
-"""PlayerController module.
-
-Manages CRUD operations for Player objects, handles input validation,
-user interaction via PlayerView, and persistence through DataManager.
-"""
-
 from typing import List, Dict
 from models.player import Player
 from views.player_view import PlayerView
@@ -16,16 +10,13 @@ from utils.validators import (
 
 
 class PlayerController:
-    """Handles player-related workflows: add, list, modify, delete."""
 
     def __init__(self, data_manager: DataManager, players: List[Player]):
-        """Initialize with a DataManager instance and existing players."""
         self.data_manager = data_manager
         self.players = players
         self.player_view = PlayerView()
 
     def run(self):
-        """Main loop for the player menu until the user exits."""
         try:
             while True:
                 self.player_view.display_player_menu()
@@ -38,7 +29,6 @@ class PlayerController:
             )
 
     def _handle_player_menu_choice(self, choice: str) -> bool:
-        """Dispatch menu choices: 1-add, 2-list, 3-modify, 4-delete, 0-exit."""
         try:
             if choice == "1":
                 self._handle_add_player()
@@ -59,7 +49,6 @@ class PlayerController:
         return True
 
     def _handle_add_player(self):
-        """Prompt for and add a new player if data is valid."""
         try:
             player_data = self.player_view.get_player_info()
             if not self._validate_player_data(player_data):
@@ -92,7 +81,6 @@ class PlayerController:
             self.player_view.display_error(f"Erreur lors de l'ajout: {e}")
 
     def _handle_list_all_players(self):
-        """List all players, sorted by last and first name."""
         if not self.players:
             self.player_view.display_info("Aucun joueur enregistré.")
             return
@@ -104,7 +92,6 @@ class PlayerController:
         self.player_view.wait_for_user()
 
     def _handle_modify_player(self):
-        """Modify an existing player's details."""
         if not self.players:
             self.player_view.display_info("Aucun joueur à modifier.")
             return
@@ -143,14 +130,12 @@ class PlayerController:
                 self.player_view.display_success("Joueur modifié avec succès!")
                 self.player_view.display_player_details(player)
             else:
-                # rollback
                 player.last_name = old['last_name']
                 player.first_name = old['first_name']
                 player.birthdate = old['birthdate']
                 player.national_id = old['national_id']
                 self.player_view.display_error("Erreur lors de la sauvegarde.")
         except Exception as e:
-            # rollback on unexpected error
             player.last_name = old['last_name']
             player.first_name = old['first_name']
             player.birthdate = old['birthdate']
@@ -158,7 +143,6 @@ class PlayerController:
             self.player_view.display_error(f"Erreur lors de la modification: {e}")
 
     def _handle_delete_player(self):
-        """Remove a player after confirmation and save changes."""
         if not self.players:
             self.player_view.display_info("Aucun joueur à supprimer.")
             return
@@ -187,7 +171,6 @@ class PlayerController:
             self.player_view.display_error(f"Erreur lors de la suppression: {e}")
 
     def _validate_player_data(self, player_data: Dict[str, str]) -> bool:
-        """Validate name, date format, and chess ID for a player."""
         if not validate_name(player_data['last_name']):
             self.player_view.display_error("Nom de famille invalide.")
             return False
@@ -207,19 +190,15 @@ class PlayerController:
         return True
 
     def _player_exists(self, national_id: str) -> bool:
-        """Check if a player with the given national ID already exists."""
         return any(p.national_id == national_id for p in self.players)
 
     def _save_players(self) -> bool:
-        """Persist the current players list via DataManager."""
         return self.data_manager.save_players(self.players)
 
     def get_all_players(self) -> List[Player]:
-        """Return a shallow copy of the players list."""
         return self.players.copy()
 
     def save_data(self):
-        """Ensure all player data is saved, reporting any error."""
         if not self._save_players():
             self.player_view.display_error(
                 "Erreur lors de la sauvegarde des joueurs."

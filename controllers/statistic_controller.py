@@ -1,10 +1,3 @@
-"""StatisticsController module.
-
-Defines the StatisticsController class, which presents various
-reports and summary statistics by orchestrating the player and
-tournament controllers and formatting output via the view.
-"""
-
 from controllers.player_controller import PlayerController
 from controllers.tournament_controller import TournamentController
 from views.statistic_view import StatisticsView

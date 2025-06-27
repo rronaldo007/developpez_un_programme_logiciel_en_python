@@ -1,6 +1,9 @@
 from typing import Optional
+
 from utils.validators import (
-    validate_chess_id, validate_name, validate_date_format
+    validate_chess_id,
+    validate_name,
+    validate_date_format
 )
 from utils.date_utils import calculate_age
 
@@ -52,14 +55,12 @@ class Player:
             if field not in data:
                 raise KeyError(f"Champ requis manquant: {field}")
 
-        player = Player(
+        return Player(
             last_name=data["last_name"],
             first_name=data["first_name"],
             birthdate=data["birthdate"],
             national_id=data["national_id"]
         )
-
-        return player
 
     def __str__(self) -> str:
         return f"{self.get_full_name()} ({self.national_id})"

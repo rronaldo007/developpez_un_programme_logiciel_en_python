@@ -222,17 +222,30 @@ class TournamentView(BaseView):
         for i, tournament in enumerate(tournaments, 1):
             status = format_tournament_status(tournament)
             players_count = len(tournament.players)
+            print(f"{i}. {tournament.name} ({tournament.location})")
+            print(f"    {status} - {players_count} joueurs - "
+                  f"Tours: {tournament.current_round}/"
+                  f"{tournament.number_of_rounds}")
 
-            name = (tournament.name[:22] + "..."
-                    if len(tournament.name) > 25 else tournament.name)
-            location = (tournament.location[:12] + "..."
-                        if len(tournament.location) > 15
-                        else tournament.location)
+        print("0. Annuler")
+        self.display_separator()
 
-            print(f"{i:<3} {name:<25} {location:<15} {status:<15} "
-                  f"{players_count:<8}")
-
-        self.wait_for_user()
+        try:
+            choice = int(self.get_input("Numéro du tournoi"))
+            if choice == 0:
+                return None
+            elif 1 <= choice <= len(tournaments):
+                return tournaments[choice - 1]
+            else:
+                self.show_error(
+                    f"Numéro invalide. Entrez un nombre entre 0 et "
+                    f"{len(tournaments)}."
+                )
+                return self.select_tournament(tournaments)
+        except ValueError:
+            self.show_error("Veuillez entrer un numéro valide.")
+            return self.select_tournament(tournaments)
+        
 
     def show_tournament_details(self, tournament):
         self.display_title(f"DÉTAILS DU TOURNOI - {tournament.name}")

@@ -1,3 +1,9 @@
+"""Application entry point.
+
+Initializes and runs the MainController for the tournament app,
+handling KeyboardInterrupt to allow clean exit by the user.
+"""
+
 from controllers.main_controller import MainController
 
 

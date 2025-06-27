@@ -1,11 +1,10 @@
-from typing import List, Optional, Tuple, Dict
 import re
+from typing import List, Tuple, Dict
 
 from .player import Player
 from .round import Round
 from .match import Match
-from utils.validators import validate_score
-from utils.validators import validate_date_format
+from utils.validators import validate_score, validate_date_format
 from utils.tournament_helpers import (
     TournamentValidationHelper,
     TournamentPairingHelper
@@ -57,24 +56,18 @@ class Tournament:
     def _validate_tournament_name(self, name: str) -> bool:
         if not name or not isinstance(name, str):
             return False
-
         name = name.strip()
-
         if len(name) < 1 or len(name) > 100:
             return False
-
         pattern = r"^[a-zA-ZÀ-ÿ0-9\s\-'\.]+$"
         return bool(re.match(pattern, name))
 
     def _validate_location(self, location: str) -> bool:
         if not location or not isinstance(location, str):
             return False
-
         location = location.strip()
-
         if len(location) < 1 or len(location) > 200:
             return False
-
         pattern = r"^[a-zA-ZÀ-ÿ0-9\s\-',\.]+$"
         return bool(re.match(pattern, location))
 
@@ -89,7 +82,6 @@ class Tournament:
             raise ValueError(
                 f"Le joueur {player.national_id} participe déjà au tournoi"
             )
-
         self.players.append(player)
         self.player_scores[player.national_id] = 0.0
 
@@ -100,8 +92,7 @@ class Tournament:
             )
         try:
             self.players.remove(player)
-            if player.national_id in self.player_scores:
-                del self.player_scores[player.national_id]
+            self.player_scores.pop(player.national_id, None)
             return True
         except ValueError:
             return False
@@ -112,58 +103,52 @@ class Tournament:
     def add_score_to_player(self, national_id: str, points: float):
         if not validate_score(points):
             raise ValueError("Les points doivent être 0, 0.5 ou 1")
-
-        current_score = self.player_scores.get(national_id, 0.0)
-        self.player_scores[national_id] = current_score + points
+        self.player_scores[national_id] = (
+            self.player_scores.get(national_id, 0.0) + points
+        )
 
     def reset_all_scores(self):
-        for national_id in self.player_scores:
-            self.player_scores[national_id] = 0.0
+        for nat_id in self.player_scores:
+            self.player_scores[nat_id] = 0.0
 
     def has_started(self) -> bool:
-        return len(self.rounds) > 0
+        return bool(self.rounds)
 
     def is_finished(self) -> bool:
-        return (self._is_finished or
-                (self.current_round >= self.number_of_rounds and
-                 self.rounds and self.rounds[-1].is_finished))
+        return (
+            self._is_finished or
+            (self.current_round >= self.number_of_rounds and
+             self.rounds and self.rounds[-1].is_finished)
+        )
 
     def finish_tournament(self):
         self._is_finished = True
 
     def can_start_next_round(self) -> bool:
-        return (not self.is_finished() and
-                len(self.players) >= 2 and
-                len(self.players) % 2 == 0 and
-                self.current_round < self.number_of_rounds and
-                (not self.rounds or self.rounds[-1].is_finished))
+        return (
+            not self.is_finished() and
+            len(self.players) >= 2 and
+            len(self.players) % 2 == 0 and
+            self.current_round < self.number_of_rounds and
+            (not self.rounds or self.rounds[-1].is_finished)
+        )
 
     def start_next_round(self, pairs: List[Tuple[Player, Player]]) -> Round:
         if not self.can_start_next_round():
             raise ValueError("Impossible de démarrer le tour suivant")
-
         self.current_round += 1
-        round_name = f"Tour {self.current_round}"
-        new_round = Round(round_name)
-
-        for player1, player2 in pairs:
-            match = Match(player1.national_id, player2.national_id)
-            new_round.add_match(match)
-
+        new_round = Round(f"Tour {self.current_round}")
+        for p1, p2 in pairs:
+            new_round.add_match(Match(p1.national_id, p2.national_id))
         self.rounds.append(new_round)
         return new_round
 
     def update_player_scores(self):
         self.reset_all_scores()
-
-        for round_obj in self.rounds:
-            for match in round_obj.get_finished_matches():
-                self.add_score_to_player(
-                    match.player1_national_id, match.player1_score
-                )
-                self.add_score_to_player(
-                    match.player2_national_id, match.player2_score
-                )
+        for rnd in self.rounds:
+            for m in rnd.get_finished_matches():
+                self.add_score_to_player(m.player1_national_id, m.player1_score)
+                self.add_score_to_player(m.player2_national_id, m.player2_score)
 
     def get_current_rankings(self) -> List[Player]:
         return sorted(
@@ -197,20 +182,20 @@ class Tournament:
             "description": self.description,
             "number_of_rounds": self.number_of_rounds,
             "current_round": self.current_round,
-            "rounds": [round_obj.to_dict() for round_obj in self.rounds],
-            "players": [player.to_dict() for player in self.players],
+            "rounds": [rnd.to_dict() for rnd in self.rounds],
+            "players": [pl.to_dict() for pl in self.players],
             "player_scores": self.player_scores,
             "is_finished": self._is_finished
         }
 
     @staticmethod
     def from_dict(data: dict, players_lookup: Dict[str, Player]) -> 'Tournament':
-        required_fields = ["name", "location", "start_date", "end_date"]
-        for field in required_fields:
+        required = ["name", "location", "start_date", "end_date"]
+        for field in required:
             if field not in data:
                 raise KeyError(f"Champ requis manquant: {field}")
 
-        tournament: Tournament = Tournament(
+        t = Tournament(
             name=data["name"],
             location=data["location"],
             start_date=data["start_date"],
@@ -218,40 +203,48 @@ class Tournament:
             description=data.get("description", ""),
             number_of_rounds=data.get("number_of_rounds", 4)
         )
+        # restore ID and counter
+        t.id = data.get("id", t.id)
+        Tournament._id_counter = max(Tournament._id_counter, t.id + 1)
+        t.current_round = data.get("current_round", 0)
+        t._is_finished = data.get("is_finished", False)
 
-        tournament.id = data.get("id", tournament.id)
-        Tournament._id_counter = max(Tournament._id_counter, tournament.id + 1)
-        tournament.current_round = data.get("current_round", 0)
-        tournament._is_finished = data.get("is_finished", False)
+        t._load_players(data.get("players", []), players_lookup)
+        t.player_scores = data.get("player_scores", {})
+        for pid in (p.national_id for p in t.players):
+            t.player_scores.setdefault(pid, 0.0)
 
-        for player_data in data.get("players", []):
-            if isinstance(player_data, dict) and "national_id" in player_data:
-                national_id = player_data["national_id"]
-                if national_id in players_lookup:
-                    player = players_lookup[national_id]
-                    tournament.players.append(player)
+        t._load_rounds(data.get("rounds", []))
+        return t
 
-        tournament.player_scores = data.get("player_scores", {})
+    def _load_players(self, raw_players: List[dict],
+                      lookup: Dict[str, Player]):
+        for pd in raw_players:
+            if not isinstance(pd, dict):
+                continue
+            nid = pd.get("national_id")
+            if nid in lookup:
+                self.players.append(lookup[nid])
 
-        for player in tournament.players:
-            if player.national_id not in tournament.player_scores:
-                tournament.player_scores[player.national_id] = 0.0
-
-        for round_data in data.get("rounds", []):
+    def _load_rounds(self, raw_rounds: List[dict]):
+        for rd in raw_rounds:
             try:
-                round_obj = Round.from_dict(round_data)
-                tournament.rounds.append(round_obj)
+                self.rounds.append(Round.from_dict(rd))
             except Exception as e:
                 print(f"Erreur lors du chargement d'un tour: {e}")
 
-        return tournament
-
     def __str__(self) -> str:
-        status = ("Terminé" if self.is_finished()
-                  else ("En cours" if self.has_started() else "Non commencé"))
-        return (f"{self.name} ({self.location}) - {len(self.players)} "
-                f"joueurs - {status}")
+        status = (
+            "Terminé" if self.is_finished()
+            else ("En cours" if self.has_started() else "Non commencé")
+        )
+        return (
+            f"{self.name} ({self.location}) - {len(self.players)} "
+            f"joueurs - {status}"
+        )
 
     def __repr__(self) -> str:
-        return (f"Tournament(id={self.id}, name='{self.name}', "
-                f"players={len(self.players)}, rounds={len(self.rounds)})")
+        return (
+            f"Tournament(id={self.id}, name='{self.name}', "
+            f"players={len(self.players)}, rounds={len(self.rounds)})"
+        )

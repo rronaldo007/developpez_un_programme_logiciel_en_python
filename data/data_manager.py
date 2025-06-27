@@ -3,7 +3,9 @@ from typing import List, Optional, Dict
 from models.player import Player
 from models.tournament import Tournament
 from utils.file_utils import (
-    ensure_directory_exists, safe_json_save, safe_json_load
+    ensure_directory_exists,
+    safe_json_save,
+    safe_json_load
 )
 
 
@@ -187,7 +189,7 @@ class DataManager:
             files = []
             for filename in os.listdir(self.tournaments_dir):
                 if (filename.startswith("tournament_") and
-                    filename.endswith(".json") and
+                        filename.endswith(".json") and
                         not filename.endswith(".backup")):
                     files.append(
                         os.path.join(self.tournaments_dir, filename)

@@ -1,7 +1,9 @@
-from typing import List, Optional, Tuple
+from typing import List, Optional
+
 from .match import Match
 from utils.date_utils import (
-    get_current_timestamp, calculate_duration_minutes
+    get_current_timestamp,
+    calculate_duration_minutes
 )
 
 
